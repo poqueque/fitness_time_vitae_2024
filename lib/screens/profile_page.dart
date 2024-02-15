@@ -27,16 +27,11 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           const Text(
             'Antonia Font',
-            style: TextStyle(
-              fontSize: 40,
-              color: Colors.black45,
-            ),
+            style: AppStyles.bigTitle,
           ),
           const Text(
             'registered 20 April 2023',
-            style: TextStyle(
-              color: Colors.black45,
-            ),
+            style: AppStyles.subTitle,
           ),
           const SizedBox(height: 32),
           const Row(

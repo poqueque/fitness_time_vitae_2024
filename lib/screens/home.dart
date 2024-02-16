@@ -47,7 +47,32 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-            for (var activity in activities) ActivityCard(activity: activity),
+            for (var activity in activities)
+              Dismissible(
+                key: UniqueKey(),
+                child: InkWell(
+                  child: ActivityCard(activity: activity),
+                  onLongPress: () {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return (ListTile(
+                            leading: Icon(Icons.delete),
+                            title: Text("Borrar actividad"),
+                            onTap: () {
+                              activities.remove(activity);
+                              setState(() {});
+                              Navigator.pop(context);
+                            },
+                          ));
+                        });
+                  },
+                ),
+                onDismissed: (dismissDirection) {
+                  activities.remove(activity);
+                  setState(() {});
+                },
+              ),
           ],
         ),
       ),

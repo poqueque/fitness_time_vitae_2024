@@ -39,23 +39,25 @@ class _NewActivityState extends State<NewActivity> {
               ),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () {
-                  var activityType = activityController.text;
-                  var distance = distanceController.text;
-                  var activity = Activity(
-                    type: activityType,
-                    date: DateTime.now(),
-                    distance: double.tryParse(distance) ?? 0,
-                  );
-                  Navigator.pop(
-                    context,
-                    activity,
-                  );
-                },
+                onPressed: addActivity,
                 child: const Text("Añade Actividad"),
               )
             ],
           ),
         ));
+  }
+
+  void addActivity() {
+    var activityType = activityController.text;
+    var distance = distanceController.text;
+    var activity = Activity(
+      type: activityType,
+      date: DateTime.now(),
+      distance: double.tryParse(distance) ?? 0,
+    );
+    Navigator.pop(
+      context,
+      activity,
+    );
   }
 }
